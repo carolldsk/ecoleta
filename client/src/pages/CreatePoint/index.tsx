@@ -38,8 +38,15 @@ const CreatePoint = () => {
     const [initialPosition, setInitialPosition] = useState<[number, number]>([-23.5569532,-46.6611564]); // useState<[number, number]>  significa que a initialPosition é um array com duas posições contendo dois inteiros, sendo assim, também tipando mas de outra forma, ([]) é o retorno do setInitialPosition, informado que o inicio do estado é um array com valores zerados
 
     // Guarda comportamento da option selecionada pelo user
-    const [selectedUF, setSelectedUF]     = useState('0');
-    const [selectedCity, setSelectedCity] = useState('0');
+    const [formData, setFormData] = useState({
+        nome: '',
+        email: '',
+        whatsapp: '',
+    });
+
+    const [selectedUF, setSelectedUF]       = useState('0');
+    const [selectedCity, setSelectedCity]   = useState('0');
+    const [selectedItems, setSelectedItems] = useState<number[]>([]);
     const [selectedPosition, setSelectedPosition] = useState<[number, number]>([0,0]);
 
 
@@ -125,6 +132,33 @@ const CreatePoint = () => {
         ])
     }
 
+    function handleInputChange(event: ChangeEvent<HTMLInputElement>){
+
+        let {name, value} = event.target;
+        // spread operator para preservar valor que já temos
+        setFormData({...formData, [name]: value});
+
+        //console.log({...formData, [name]: value});
+    }
+
+    function handleSelectItem(id: number) {
+
+        let alteradySelected = selectedItems.findIndex(item => item == id);
+
+        if(alteradySelected >=0){
+            //deseleciona itens, filtrando apenas itens selecionados para remover o restante
+            let filteredItems = selectedItems.filter(item => item !== id);
+            setSelectedItems(filteredItems);
+
+        }
+        else {
+            // Adiciona item selecionado
+            setSelectedItems([...selectedItems, id]);
+        }
+
+
+    }
+
 
     return (
         <div id="page-create-point">
@@ -144,17 +178,17 @@ const CreatePoint = () => {
 
                     <div className="field">
                         <label htmlFor="name">Nome da entidade</label>
-                        <input type="text" name="name" id="name"/>
+                        <input type="text" name="name" id="name" onChange={handleInputChange}/>
                     </div>
 
                     <div className="field-group">
                         <div className="field">
                             <label htmlFor="email">E-mail</label>
-                            <input type="text" name="email" id="email"/>
+                            <input type="text" name="email" id="email" onChange={handleInputChange}/>
                         </div>
                         <div className="field">
                             <label htmlFor="whatsapp">Whatsapp</label>
-                            <input type="text" name="whatsapp" id="whatsapp"/>
+                            <input type="text" name="whatsapp" id="whatsapp" onChange={handleInputChange}/>
                         </div>
                     </div>
                 </fieldset>
@@ -209,7 +243,10 @@ const CreatePoint = () => {
 
                     <ul className="items-grid">
                         {items.map(item => (
-                            <li key={item.id}>
+                            <li key={item.id} 
+                                onClick={() => handleSelectItem(item.id)} 
+                                className={selectedItems.includes(item.id) ? 'selected' : ''}
+                            >
                                 <img src={item.image_url} alt={item.title}/>
                                 <span>{item.title}</span>
                             </li>
