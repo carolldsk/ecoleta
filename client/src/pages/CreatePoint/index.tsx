@@ -1,5 +1,5 @@
-import React, {useEffect, useState, ChangeEvent} from 'react';
-import { Link } from 'react-router-dom';
+import React, {useEffect, useState, ChangeEvent, FormEvent} from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import {FiArrowLeft} from 'react-icons/fi';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 import api from '../../services/api';
@@ -39,7 +39,7 @@ const CreatePoint = () => {
 
     // Guarda comportamento da option selecionada pelo user
     const [formData, setFormData] = useState({
-        nome: '',
+        name: '',
         email: '',
         whatsapp: '',
     });
@@ -49,6 +49,8 @@ const CreatePoint = () => {
     const [selectedItems, setSelectedItems] = useState<number[]>([]);
     const [selectedPosition, setSelectedPosition] = useState<[number, number]>([0,0]);
 
+    // Para fazer redirect do usuario
+    const history = useHistory();
 
     /*
     * ***  SETANDO OS EFFECT HOOK   ***
@@ -143,7 +145,7 @@ const CreatePoint = () => {
 
     function handleSelectItem(id: number) {
 
-        let alteradySelected = selectedItems.findIndex(item => item == id);
+        let alteradySelected = selectedItems.findIndex(item => item === id);
 
         if(alteradySelected >=0){
             //deseleciona itens, filtrando apenas itens selecionados para remover o restante
@@ -155,8 +157,30 @@ const CreatePoint = () => {
             // Adiciona item selecionado
             setSelectedItems([...selectedItems, id]);
         }
+    }
 
+    async function handleSubmit(event: FormEvent){
+        event.preventDefault();
+        let uf    = selectedUF;
+        let city  = selectedCity;
+        let items = selectedItems;
+        let [latitude, longetude ] = selectedPosition;
+        let { name, email, whatsapp } = formData;
 
+        const data = {
+            name,
+            email,
+            whatsapp,
+            latitude,
+            longetude,
+            city,
+            uf,
+            items
+        }
+        await api.post('points', data);
+
+        alert('Cadastro concluído!');
+        history.push('/');
     }
 
 
@@ -169,7 +193,7 @@ const CreatePoint = () => {
                     Voltar para home
                 </Link>
             </header>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <h1>Cadastro do <br/> ponto de coleta</h1>
                 <fieldset>
                     <legend>
