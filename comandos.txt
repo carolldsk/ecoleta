@@ -87,3 +87,11 @@
 
   - Instalando mapa na nossa aplicação, poderíamos utilizar o maps mas o leafletjs é opensource
   > npm install leaflet react-leaflet 
+
+  - Instalando os tipos do typescript para o leaflet
+  > npm install @types/react-leaflet -D
+
+- Instalando a biblioteca Axios para fazermos requisições pro back de forma simples
+> npm install axios
+
+
