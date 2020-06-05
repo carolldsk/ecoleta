@@ -1,0 +1,54 @@
+ Arquivo App : 
+
+import React, {useState} from 'react';
+import './App.css';
+import Header from './Header';
+
+
+// JSX : Sintaxe de XML dentro do Javascript
+function App() {
+    // Utilizando desestruturação pegando o retorno do useState e criando duas variáveis counter e setCounter
+    const [counter, setCounter] = useState(1); // retorna um array assim : [0 => valor do estado , 1 => funcao para atualizar o valor do estado]
+
+    // Aplicando os conceitos de imutabilidade alterando o estado de counter a cada click
+    function handleButtonClick(){
+        setCounter(counter + 1);
+    }
+
+    return (
+        <div className="App">
+            <Header title="" />
+            <p>{counter}</p>
+            <button type="button" onClick={handleButtonClick}> Aumentar </button>
+        </div>
+    );
+}
+
+export default App;
+
+
+
+---------------------------------------------------------------------
+
+ Arquivo Header : 
+
+
+import React from 'react';
+
+//forma de definir uma forma de um objeto dentro do typescript
+interface HeaderProps{
+    // Essa title nao é obrigatória
+    title?: string;
+}
+
+// FC  = Componente escrito em forma de funcao
+// as props são atribuitos que enviamos para o componente
+const Header: React.FC<HeaderProps> = (props) => {
+    return(
+        <header>
+            <h1>{props.title ? props.title : 'Ecoleta'}</h1>
+        </header>
+    );
+}
+
+export default Header;

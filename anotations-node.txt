@@ -1,0 +1,54 @@
+import express from 'express';
+const app  = express();
+
+app.use(express.json()); //Agora o express entende o body em formato json
+
+// Rota : Endereço completo da requisição
+// Recurso: Qual entidade estamos acessando no sistema
+// GET: Buscar uma ou mais informações do back-end
+// POST: Criar uma nova informação no back-end
+// PUT: Atualizar uma informação existente no back-end
+// DELETE: Remover uma informação do back-end
+
+// GET http://localhost:3333/users    = Listar usuários
+// POST http://localhost:3333/users   = Criar usuário
+// GET http://localhost:3333/users/1  = Buscar dados de um usuário com base no ID 1
+
+// Request Param : Parâmetros que vem na própria rota que identificam um recurso
+// Query Param : Parâmetros que vem na própria rota geralmente opcionais para filtros, paginação
+// Request Body : Parâmetros para criação/atualização de informações
+
+const users = [
+    'Diego',
+    'Rodrigo',
+    'Roberto'
+];
+
+app.get('/users', (request, response) => {
+    //Filtro para usuarios utilizando query params
+    const search = String(request.query.search);
+    const filteredUsers = search ? users.filter(user => user.includes(search)) : users;
+
+    return response.json(filteredUsers);
+});
+app.get('/users/:id', (request, response) => {
+
+    let id   = Number(request.params.id);
+    let user = users[id];
+
+    return response.json(user);
+});
+
+app.post('/users', (request, response) => {
+    let data = request.body;
+    let user = {
+        name: data.name,
+        email: data.email
+    }
+
+    return response.json(users);
+});
+
+app.listen(3333);
+
+//export default app;

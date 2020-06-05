@@ -1,0 +1,89 @@
+- Iniciando projeto 
+> npm init
+
+- Instalando o Express para lidarmos com as rotas
+
+> npm install Express
+
+- Nessa aplicação iremos usar o TypeScript, para tipagem de variáveis e melhoria de código
+> npm install typescript -D
+
+- Criando arquivo de configuração do TypeScript
+> npx tsc --init
+
+- Para usar o Express junto com TypeScript, precisamos instalar os tipos conforme abaixo :
+> npm install @types/express -D
+
+- Para fazer o node conseguir rodar o TypeScript no server precisamos instalar o TypeScript Node
+> npm install ts-node -D
+
+- Agora para executarmos a aplicação com seguinte comando : 
+> npx ts-node src/server.ts
+
+- Para instalar um observable, ele fica observando alterações no codigo e atualiza
+> npm install ts-node-dev
+
+
+- Para evitar ficar rodando "npx ts-node src/server.ts" em uma forma muito verbosa, vamos ao arquivo "package.json" e reduzir esse comando de run includindo o techo abaixo de código :
+
+  "scripts": {
+    "dev": "ts-node src/server.ts"
+  },
+
+- Agora para rodar a aplicação vc só precisa rodar :
+> npm run dev
+
+- Vamos utilizar o React.js para o front, porém junto com o TypeScript, para isso o comando :
+> npx create-react-app web --template=typescript
+
+
+- para instalar o query builder para banco de dados KNEX, fazendo querys que suportam em todos os bancos SQL : mysql, sqlite, postegres sql, sql server e etc
+> npm install knex
+
+- Escolha um banco para usar, e em seguida instale, escolhi o sqlite para usarmos nesse projeto :
+> npm install sqlite3
+
+- Apos fazer as configurações de conexão, migrations e knexfile, rode o comando executando o arquivo "knexfile.ts":
+> npx knex --knexfile knexfile.ts migrate:latest
+
+- Apos tudo funcionar, vamos colocar o comando de migrations no arquivo "package.json" conforme a seguir :
+
+  "scripts": {
+    "dev": "ts-node-dev --transpileOnly --ignore-watch node_module src/server.ts",
+    "knex:migrate":"knex --knexfile knexfile.ts migrate:latest"
+  },
+
+
+- Agora para rodar a atualizacao das migrations e atualizar o arquivo "database.sqlite" basta :
+> yarn knex:migrate
+
+- Criamos uma pasta chamada "seeds" para criamos valores default para o banco, na estrutura do knext se chamam seeds, para rodar os seeds inclua o comando no arquivo "package.json"
+
+  "scripts": {
+    "dev": "ts-node-dev --transpileOnly --ignore-watch node_module src/server.ts",
+    "knex:migrate":"knex --knexfile knexfile.ts migrate:latest",
+    "knex:seed":"knex --knexfile knexfile.ts seed:run"
+  },
+
+  - Agora para criar os dados default que está dentro de "seeds" execute :
+  > yarn knex:seed
+
+  - Para autorizar o cors 
+  > npm install cors
+  
+  - Em seguida instalar os types do cors para o TypeScript parar de gritar
+  > npm install @types/cors -D
+
+ -------- Parte front ----------------
+
+  - Para instalar icones no react :
+  > npm install react-icons --save
+
+  - Para instalar o routes do react
+  > npm install react-router-dom --save
+  
+  - Para resolver o problema de tipagem do router-dom com typescript : 
+  > npm install @types/react-router-dom -D
+
+  - Instalando mapa na nossa aplicação, poderíamos utilizar o maps mas o leafletjs é opensource
+  > npm install leaflet react-leaflet 
