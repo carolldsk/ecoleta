@@ -137,11 +137,11 @@
   - Instalando location para pegar a localização atual do usuário
   > expo install expo-location
 
-  
+  - Instalando funcionalidade para e-mail 
+  > expo install expo-mail-composer
 
-  
-
-
+  - Select picker para a nossa aplicação
+  > npm install react-native-picker-select
 
 
 
