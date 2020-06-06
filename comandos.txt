@@ -75,6 +75,20 @@
   - Em seguida instalar os types do cors para o TypeScript parar de gritar
   > npm install @types/cors -D
 
+  - extensão para lidar com upload de imagens
+  > npm install multer
+
+  - Instalando tipagem para o multer
+  > npm install @types/multer -D
+
+  - Instalando Celebrate para validações de entrada de dados no backend
+  > npm install celebrate
+
+  - Instalando tipagem para o celebrate 
+  > npm install @types/hapi__joi -D
+
+
+
 -------- Parte front ----------------
 
   - Para instalar icones no react :
@@ -94,6 +108,10 @@
 
   - Instalando a biblioteca Axios para fazermos requisições pro back de forma simples
   > npm install axios
+
+  - Incluindo biblioteca dropzone para incluir imagens
+  > npm install --save react-dropzone
+
 
 
 -------- Parte mobile ---------------- 
@@ -142,6 +160,4 @@
 
   - Select picker para a nossa aplicação
   > npm install react-native-picker-select
-
-
 
