@@ -1,63 +1,64 @@
-- Iniciando projeto 
-> npm init
+-------- Parte back ----------------
 
-- Instalando o Express para lidarmos com as rotas
+  - Iniciando projeto 
+  > npm init
 
-> npm install Express
+  - Instalando o Express para lidarmos com as rotas
 
-- Nessa aplicação iremos usar o TypeScript, para tipagem de variáveis e melhoria de código
-> npm install typescript -D
+  > npm install Express
 
-- Criando arquivo de configuração do TypeScript
-> npx tsc --init
+  - Nessa aplicação iremos usar o TypeScript, para tipagem de variáveis e melhoria de código
+  > npm install typescript -D
 
-- Para usar o Express junto com TypeScript, precisamos instalar os tipos conforme abaixo :
-> npm install @types/express -D
+  - Criando arquivo de configuração do TypeScript
+  > npx tsc --init
 
-- Para fazer o node conseguir rodar o TypeScript no server precisamos instalar o TypeScript Node
-> npm install ts-node -D
+  - Para usar o Express junto com TypeScript, precisamos instalar os tipos conforme abaixo :
+  > npm install @types/express -D
 
-- Agora para executarmos a aplicação com seguinte comando : 
-> npx ts-node src/server.ts
+  - Para fazer o node conseguir rodar o TypeScript no server precisamos instalar o TypeScript Node
+  > npm install ts-node -D
 
-- Para instalar um observable, ele fica observando alterações no codigo e atualiza
-> npm install ts-node-dev
+  - Agora para executarmos a aplicação com seguinte comando : 
+  > npx ts-node src/server.ts
 
+  - Para instalar um observable, ele fica observando alterações no codigo e atualiza
+  > npm install ts-node-dev
 
-- Para evitar ficar rodando "npx ts-node src/server.ts" em uma forma muito verbosa, vamos ao arquivo "package.json" e reduzir esse comando de run includindo o techo abaixo de código :
+  - Para evitar ficar rodando "npx ts-node src/server.ts" em uma forma muito verbosa, vamos ao arquivo "package.json" e reduzir esse comando de run includindo o techo abaixo de código :
 
-  "scripts": {
-    "dev": "ts-node src/server.ts"
-  },
+    "scripts": {
+      "dev": "ts-node src/server.ts"
+    },
 
-- Agora para rodar a aplicação vc só precisa rodar :
-> npm run dev
+  - Agora para rodar a aplicação vc só precisa rodar :
+  > npm run dev
 
-- Vamos utilizar o React.js para o front, porém junto com o TypeScript, para isso o comando :
-> npx create-react-app web --template=typescript
-
-
-- para instalar o query builder para banco de dados KNEX, fazendo querys que suportam em todos os bancos SQL : mysql, sqlite, postegres sql, sql server e etc
-> npm install knex
-
-- Escolha um banco para usar, e em seguida instale, escolhi o sqlite para usarmos nesse projeto :
-> npm install sqlite3
-
-- Apos fazer as configurações de conexão, migrations e knexfile, rode o comando executando o arquivo "knexfile.ts":
-> npx knex --knexfile knexfile.ts migrate:latest
-
-- Apos tudo funcionar, vamos colocar o comando de migrations no arquivo "package.json" conforme a seguir :
-
-  "scripts": {
-    "dev": "ts-node-dev --transpileOnly --ignore-watch node_module src/server.ts",
-    "knex:migrate":"knex --knexfile knexfile.ts migrate:latest"
-  },
+  - Vamos utilizar o React.js para o front, porém junto com o TypeScript, para isso o comando :
+  > npx create-react-app web --template=typescript
 
 
-- Agora para rodar a atualizacao das migrations e atualizar o arquivo "database.sqlite" basta :
-> yarn knex:migrate
+  - para instalar o query builder para banco de dados KNEX, fazendo querys que suportam em todos os bancos SQL : mysql, sqlite, postegres sql, sql server e etc
+  > npm install knex
 
-- Criamos uma pasta chamada "seeds" para criamos valores default para o banco, na estrutura do knext se chamam seeds, para rodar os seeds inclua o comando no arquivo "package.json"
+  - Escolha um banco para usar, e em seguida instale, escolhi o sqlite para usarmos nesse projeto :
+  > npm install sqlite3
+
+  - Apos fazer as configurações de conexão, migrations e knexfile, rode o comando executando o arquivo "knexfile.ts":
+  > npx knex --knexfile knexfile.ts migrate:latest
+
+  - Apos tudo funcionar, vamos colocar o comando de migrations no arquivo "package.json" conforme a seguir :
+
+    "scripts": {
+      "dev": "ts-node-dev --transpileOnly --ignore-watch node_module src/server.ts",
+      "knex:migrate":"knex --knexfile knexfile.ts migrate:latest"
+    },
+
+
+  - Agora para rodar a atualizacao das migrations e atualizar o arquivo "database.sqlite" basta :
+  > yarn knex:migrate
+
+  - Criamos uma pasta chamada "seeds" para criamos valores default para o banco, na estrutura do knext se chamam seeds, para rodar os seeds inclua o comando no arquivo "package.json"
 
   "scripts": {
     "dev": "ts-node-dev --transpileOnly --ignore-watch node_module src/server.ts",
@@ -74,7 +75,7 @@
   - Em seguida instalar os types do cors para o TypeScript parar de gritar
   > npm install @types/cors -D
 
- -------- Parte front ----------------
+-------- Parte front ----------------
 
   - Para instalar icones no react :
   > npm install react-icons --save
@@ -91,7 +92,56 @@
   - Instalando os tipos do typescript para o leaflet
   > npm install @types/react-leaflet -D
 
-- Instalando a biblioteca Axios para fazermos requisições pro back de forma simples
-> npm install axios
+  - Instalando a biblioteca Axios para fazermos requisições pro back de forma simples
+  > npm install axios
+
+
+-------- Parte mobile ---------------- 
+  (TODOS OS COMANDOS SÓ RODARAM EM MODO ADM)
+
+  - Instalando o expo de forma global
+  > npm install -g expo-cli
+
+  - criando o projeto mobile com expo
+  > expo init mobile
+
+  - Em seguida ele vai perguntar qual template queremos utilizar 
+  - O utilizado para essa aplicacao foi o BLANCK COM TypeScript
+  - Em seguida rode o projeto utilizando
+  > yarn start
+
+  - Instalando as mesmas fontes que temos na web para o react native
+  > expo install @expo-google-fonts/ubuntu  @expo-google-fonts/roboto expo-font
+
+  - Instalando o navigation para navegar entre rotas
+  > npm install @react-navigation/native
+  
+  - Instalando pacotes do expo para lidar com : gestos, animações, screens, limitar ações do usuário para areas seguras e mascarar view
+  > expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
+
+  - Instalando outro navigation
+  > npm install @react-navigation/stack
+
+  - Instalando extensão de mapa
+  > expo install react-native-maps
+
+  - Instalando package do expo de constants
+  > expo install expo-constants
+
+  - Instalando componente de SVG para o react ler extensão SVG em imagens
+  > expo install react-native-svg
+
+  - Instalando axios para comunicação mais simples com a API
+  > npm install axios
+
+  - Instalando location para pegar a localização atual do usuário
+  > expo install expo-location
+
+  
+
+  
+
+
+
 
 

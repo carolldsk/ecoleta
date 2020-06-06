@@ -164,7 +164,7 @@ const CreatePoint = () => {
         let uf    = selectedUF;
         let city  = selectedCity;
         let items = selectedItems;
-        let [latitude, longetude ] = selectedPosition;
+        let [latitude, longitude ] = selectedPosition;
         let { name, email, whatsapp } = formData;
 
         const data = {
@@ -172,7 +172,7 @@ const CreatePoint = () => {
             email,
             whatsapp,
             latitude,
-            longetude,
+            longitude,
             city,
             uf,
             items
