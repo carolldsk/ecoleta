@@ -1,7 +1,3 @@
-<h1 align="center">
-    <img alt="Example" title="Example" src=".github/capa.svg" width="500px" />
-</h1>
-
 
 ## :rocket: Technologies
 
