@@ -35,13 +35,17 @@ const Home = () => {
                 <TextInput
                     style={styles.input}
                     value={uf}
+                    maxLength={2}
+                    autoCorrect={false}
                     placeholder="Digite a UF"
+                    autoCapitalize="characters"
                     onChangeText={text => setUf(text)}
                 />
                 <TextInput
                     style={styles.input}
-                    placeholder="Digite a Cidade"
                     value={city}
+                    autoCorrect={false}
+                    placeholder="Digite a Cidade"
                     onChangeText={text => setCity(text)}
                 />
                     <RectButton style={styles.button} onPress={handleNavigateToPoints} >
