@@ -23,7 +23,7 @@ From your command line:
 $ git clone https://github.com/carolldsk/ecoleta.git
 
 # Go into the repository
-$ cd NLW-1.0/backend
+$ cd ecoleta/server
 
 # Install dependencies
 $ yarn install
@@ -47,7 +47,7 @@ $ yarn dev
 $ git clone https://github.com/carolldsk/ecoleta.git
 
 # Go into the repository
-$ cd NLW-1.0/frontent
+$ cd ecoleta/client
 
 # Install dependencies
 $ yarn install
@@ -65,7 +65,7 @@ $ yarn start
 $ git clone https://github.com/carolldsk/ecoleta.git
 
 # Go into the repository
-$ cd NLW-1.0/mobile
+$ cd ecoleta/mobile
 
 # Install dependencies
 $ yarn install
