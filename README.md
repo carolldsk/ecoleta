@@ -88,3 +88,4 @@ Made with ♥ by Carolina Vieira :wave: [Get in touch!](https://www.linkedin.com
 [expo]: https://expo.io/
 [reactjs]: https://reactjs.org
 [rn]: https://facebook.github.io/react-native/
+[yarn]: https://yarnpkg.com/
