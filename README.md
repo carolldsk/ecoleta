@@ -82,3 +82,9 @@ $ expo install expo-font @expo-google-fonts/ubuntu @expo-google-fonts/roboto
 
 
 Made with ♥ by Carolina Vieira :wave: [Get in touch!](https://www.linkedin.com/in/ana-carolina-vieira-a047a486/)
+
+[nodejs]: https://nodejs.org/
+[typescript]: https://www.typescriptlang.org/
+[expo]: https://expo.io/
+[reactjs]: https://reactjs.org
+[rn]: https://facebook.github.io/react-native/
