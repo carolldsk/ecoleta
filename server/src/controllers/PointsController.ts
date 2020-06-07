@@ -26,7 +26,7 @@ class PointsController {
             }
         });
 
-        return response.json(points);
+        return response.json(serializedItems);
         //return response.json({city, uf, items});
 
     }

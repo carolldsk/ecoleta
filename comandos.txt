@@ -69,6 +69,9 @@
   - Agora para criar os dados default que está dentro de "seeds" execute :
   > yarn knex:seed
 
+  - Para ver o banco rodando no VSCODE
+  > ctrl + shift + p e pesquisar: SQLite Open Database (Antes disso instalar o plugin do sqlite)
+
   - Para autorizar o cors 
   > npm install cors
   
